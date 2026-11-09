@@ -7,4 +7,8 @@
 <img width="1758" height="569" alt="image" src="https://github.com/user-attachments/assets/506cc24f-acf0-4fce-9968-f4bdbfdc01f7" />
 <img width="1829" height="733" alt="image" src="https://github.com/user-attachments/assets/13876ccd-9be5-4434-bf5c-7dc689ee9c74" />
 
+## Les evenements enregistrés
+<img width="1915" height="772" alt="image" src="https://github.com/user-attachments/assets/5b38d517-1bed-4331-8690-13aa7561c8fc" />
+
+
 
