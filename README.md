@@ -10,5 +10,13 @@
 ## Les evenements enregistrés
 <img width="1915" height="772" alt="image" src="https://github.com/user-attachments/assets/5b38d517-1bed-4331-8690-13aa7561c8fc" />
 
+## Lancement de PostgreSQL en utilisant docker
+<img width="1252" height="249" alt="image" src="https://github.com/user-attachments/assets/2cacb3bb-359a-417d-bdeb-8f6e5ad0716e" />
+
+## Etablir la connexion avec PostgreSQL  en utilisant intelliJ IDEA 
+<img width="1871" height="951" alt="image" src="https://github.com/user-attachments/assets/78410786-499a-40c2-a3cb-3ddcf83c691d" />
+
+
+
 
 
