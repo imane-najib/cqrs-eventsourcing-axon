@@ -1,10 +1,7 @@
 package stage.ifm.escqrsaxon.commands.controllers;
 
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import stage.ifm.escqrsaxon.commands.commands.AddAccountCommand;
 import stage.ifm.escqrsaxon.commands.dtos.AddNewAccountRequestDTO;
 
@@ -28,5 +25,10 @@ public class AccountCommandController {
                 request.currency()
         ));
         return response;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String exceptionHandler(Exception exception){
+        return exception.getMessage();
     }
 }
