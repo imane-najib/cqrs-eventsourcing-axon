@@ -15,6 +15,10 @@
 
 ## Etablir la connexion avec PostgreSQL  en utilisant intelliJ IDEA 
 <img width="1871" height="951" alt="image" src="https://github.com/user-attachments/assets/78410786-499a-40c2-a3cb-3ddcf83c691d" />
+<img width="1251" height="891" alt="image" src="https://github.com/user-attachments/assets/19acde97-f6c9-4890-986b-555cbbfb5b2a" />
+<img width="1494" height="695" alt="image" src="https://github.com/user-attachments/assets/da99e1aa-16ff-4c79-a4b8-26601fe98e8c" />
+
+
 
 
 
