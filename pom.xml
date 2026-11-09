@@ -71,9 +71,8 @@
         <!-- Source: https://mvnrepository.com/artifact/org.axonframework/axon-messaging -->
         <dependency>
             <groupId>org.axonframework</groupId>
-            <artifactId>axon-messaging</artifactId>
-            <version>5.4.1</version>
-            <scope>compile</scope>
+            <artifactId>axon-spring-boot-starter</artifactId>
+            <version>4.13.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.axonframework</groupId>
