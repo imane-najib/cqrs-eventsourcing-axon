@@ -18,6 +18,13 @@
 <img width="1251" height="891" alt="image" src="https://github.com/user-attachments/assets/19acde97-f6c9-4890-986b-555cbbfb5b2a" />
 <img width="1494" height="695" alt="image" src="https://github.com/user-attachments/assets/da99e1aa-16ff-4c79-a4b8-26601fe98e8c" />
 
+## Afficher les evenements dans event store 
+<img width="1198" height="715" alt="image" src="https://github.com/user-attachments/assets/44dd8b7e-f9be-4bef-82a2-76e934d8bc6e" />
+
+## Crediter un compte 
+<img width="1913" height="846" alt="image" src="https://github.com/user-attachments/assets/84c6c265-d5ea-4f04-b614-e903e161f95e" />
+<img width="882" height="339" alt="image" src="https://github.com/user-attachments/assets/f252e2a1-9ab9-4557-9429-45b9ea18fd41" />
+
 
 
 
