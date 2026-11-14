@@ -2,6 +2,7 @@ package stage.ifm.escqrsaxon.query.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import stage.ifm.escqrsaxon.enums.OperationType;
 
 import java.util.Date;
 
