@@ -29,6 +29,11 @@
 <img width="1838" height="767" alt="image" src="https://github.com/user-attachments/assets/aca74a4e-65bd-4aa9-af7f-09adea5d7cfd" />
 <img width="989" height="667" alt="image" src="https://github.com/user-attachments/assets/9d492168-4093-4fc9-94f1-21363df6c309" />
 
+## changer l'etat d'un compte
+<img width="1777" height="783" alt="image" src="https://github.com/user-attachments/assets/59082921-0c3e-476c-944f-4426d3d715e7" />
+<img width="976" height="346" alt="image" src="https://github.com/user-attachments/assets/4cd508cd-5f51-4141-8ae9-559a7e3dc992" />
+
+
 
 
 
