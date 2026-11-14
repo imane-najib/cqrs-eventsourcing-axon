@@ -25,6 +25,12 @@
 <img width="1913" height="846" alt="image" src="https://github.com/user-attachments/assets/84c6c265-d5ea-4f04-b614-e903e161f95e" />
 <img width="882" height="339" alt="image" src="https://github.com/user-attachments/assets/f252e2a1-9ab9-4557-9429-45b9ea18fd41" />
 
+## Debiter un compte 
+<img width="1838" height="767" alt="image" src="https://github.com/user-attachments/assets/aca74a4e-65bd-4aa9-af7f-09adea5d7cfd" />
+<img width="989" height="667" alt="image" src="https://github.com/user-attachments/assets/9d492168-4093-4fc9-94f1-21363df6c309" />
+
+
+
 
 
 
