@@ -5,8 +5,10 @@ import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.springframework.web.bind.annotation.*;
 import stage.ifm.escqrsaxon.commands.commands.AddAccountCommand;
 import stage.ifm.escqrsaxon.commands.commands.CreditAccountCommand;
+import stage.ifm.escqrsaxon.commands.commands.DebitAccountCommand;
 import stage.ifm.escqrsaxon.commands.dtos.AddNewAccountRequestDTO;
 import stage.ifm.escqrsaxon.commands.dtos.CreditAccountRequestDTO;
+import stage.ifm.escqrsaxon.commands.dtos.DebitAccountRequestDTO;
 
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +40,15 @@ public class AccountCommandController {
     @PostMapping("/credit")
     public CompletableFuture<String> creditAccount(@RequestBody CreditAccountRequestDTO request){
         CompletableFuture<String> response = commandGateway.send(new CreditAccountCommand(
+                request.accountId(),
+                request.amount(),
+                request.currency()
+        ));
+        return response;
+    }
+    @PostMapping("/debit")
+    public CompletableFuture<String> debitAccount(@RequestBody DebitAccountRequestDTO request){
+        CompletableFuture<String> response = commandGateway.send(new DebitAccountCommand(
                 request.accountId(),
                 request.amount(),
                 request.currency()

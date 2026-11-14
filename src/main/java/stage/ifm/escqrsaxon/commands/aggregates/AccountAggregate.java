@@ -9,9 +9,12 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import stage.ifm.escqrsaxon.commands.commands.AddAccountCommand;
 import stage.ifm.escqrsaxon.commands.commands.CreditAccountCommand;
+import stage.ifm.escqrsaxon.commands.commands.DebitAccountCommand;
 import stage.ifm.escqrsaxon.enums.AccountStatus;
+import stage.ifm.escqrsaxon.events.AccountActivatedEvent;
 import stage.ifm.escqrsaxon.events.AccountCreatedEvent;
 import stage.ifm.escqrsaxon.events.AccountCreditedEvent;
+import stage.ifm.escqrsaxon.events.AccountDebitedEvent;
 
 @Aggregate
 @Slf4j
@@ -34,6 +37,10 @@ public class AccountAggregate {
                 AccountStatus.CREATED,
                 command.getCurrency()
         ));
+        AggregateLifecycle.apply(new AccountActivatedEvent(
+                command.getId(),
+                AccountStatus.ACTIVATED
+        ));
     }
 
     @CommandHandler
@@ -42,6 +49,19 @@ public class AccountAggregate {
         if (!status.equals(AccountStatus.ACTIVATED)) throw new RuntimeException("The account "+command.getId()+" is not activated");
         if (command.getAmount()<=0) throw new IllegalArgumentException("Amount must be positive");
         AggregateLifecycle.apply(new AccountCreditedEvent(
+                command.getId(),
+                command.getAmount(),
+                command.getCurrency()
+        ));
+    }
+
+    @CommandHandler
+    public void handleDebit(DebitAccountCommand command){
+        log.info("############## DebitAccountCommand Received ##############");
+        if (!status.equals(AccountStatus.ACTIVATED)) throw new RuntimeException("The account "+command.getId()+" is not activated");
+        if (command.getAmount()<=0) throw new IllegalArgumentException("Amount must be positive");
+        if (this.balance<command.getAmount()) throw new IllegalArgumentException("insufficient balance");
+        AggregateLifecycle.apply(new AccountDebitedEvent(
                 command.getId(),
                 command.getAmount(),
                 command.getCurrency()
@@ -62,5 +82,20 @@ public class AccountAggregate {
         this.accountId = event.getAccountId();
         this.balance += event.getAmount();
 
+    }
+    @EventSourcingHandler
+    public void on(AccountDebitedEvent event) {
+        log.info("####### AccountDebitedEvent occured #########");
+        this.accountId = event.getAccountId();
+        this.balance -= event.getAmount();
+
+    }
+
+
+    @EventSourcingHandler
+    public void on(AccountActivatedEvent event) {
+        log.info("####### AccountActivatedEvent occured #########");
+        this.accountId = event.getAccountId();
+        this.status = event.getStatus();
     }
 }
