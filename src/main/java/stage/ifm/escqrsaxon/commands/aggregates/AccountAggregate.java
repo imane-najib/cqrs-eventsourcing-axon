@@ -10,11 +10,9 @@ import org.axonframework.spring.stereotype.Aggregate;
 import stage.ifm.escqrsaxon.commands.commands.AddAccountCommand;
 import stage.ifm.escqrsaxon.commands.commands.CreditAccountCommand;
 import stage.ifm.escqrsaxon.commands.commands.DebitAccountCommand;
+import stage.ifm.escqrsaxon.commands.commands.UpdateStatusCommand;
 import stage.ifm.escqrsaxon.enums.AccountStatus;
-import stage.ifm.escqrsaxon.events.AccountActivatedEvent;
-import stage.ifm.escqrsaxon.events.AccountCreatedEvent;
-import stage.ifm.escqrsaxon.events.AccountCreditedEvent;
-import stage.ifm.escqrsaxon.events.AccountDebitedEvent;
+import stage.ifm.escqrsaxon.events.*;
 
 @Aggregate
 @Slf4j
@@ -56,7 +54,7 @@ public class AccountAggregate {
     }
 
     @CommandHandler
-    public void handleDebit(DebitAccountCommand command){
+    public void handle(DebitAccountCommand command){
         log.info("############## DebitAccountCommand Received ##############");
         if (!status.equals(AccountStatus.ACTIVATED)) throw new RuntimeException("The account "+command.getId()+" is not activated");
         if (command.getAmount()<=0) throw new IllegalArgumentException("Amount must be positive");
@@ -95,6 +93,22 @@ public class AccountAggregate {
     @EventSourcingHandler
     public void on(AccountActivatedEvent event) {
         log.info("####### AccountActivatedEvent occured #########");
+        this.accountId = event.getAccountId();
+        this.status = event.getStatus();
+    }
+
+    @CommandHandler
+    public void handle(UpdateStatusCommand command){
+        log.info("############## UpdateStatusCommand Received ##############");
+        if (status.equals(command.getStatus())) throw new RuntimeException("This account "+command.getId()+" is alreeady "+command.getStatus());
+        AggregateLifecycle.apply(new AccountUpdateStatusEvent(
+                command.getId(),
+                command.getStatus()
+        ));
+    }
+    @EventSourcingHandler
+    public void on(AccountUpdateStatusEvent event){
+        log.info("############## AccountUpdateStatusEvent Occured ##############");
         this.accountId = event.getAccountId();
         this.status = event.getStatus();
     }
