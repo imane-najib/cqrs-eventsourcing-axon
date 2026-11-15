@@ -36,6 +36,10 @@
 ## Creation des EventHandler 
 <img width="1398" height="708" alt="image" src="https://github.com/user-attachments/assets/4fa03d81-74ee-4209-aa7d-11aa9ad3590c" />
 
+## Lecture des comptes (partie query)
+<img width="1261" height="636" alt="image" src="https://github.com/user-attachments/assets/63663f90-632e-4f39-afb9-681d1161ddcd" />
+
+
 
 
 
