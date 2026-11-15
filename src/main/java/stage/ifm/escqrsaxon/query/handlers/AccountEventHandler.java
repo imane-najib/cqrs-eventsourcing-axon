@@ -3,6 +3,7 @@ package stage.ifm.escqrsaxon.query.handlers;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventhandling.EventMessage;
+import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.springframework.stereotype.Component;
 import stage.ifm.escqrsaxon.enums.OperationType;
 import stage.ifm.escqrsaxon.events.*;
@@ -13,13 +14,17 @@ import stage.ifm.escqrsaxon.query.repositories.OperationRepository;
 
 @Slf4j
 @Component
+
 public class AccountEventHandler {
     private OperationRepository operationRepository;
     private AccountRepository accountRepository;
 
-    public AccountEventHandler(OperationRepository operationRepository, AccountRepository accountRepository) {
+    private QueryUpdateEmitter queryUpdateEmitter;
+
+    public AccountEventHandler(OperationRepository operationRepository, AccountRepository accountRepository, QueryUpdateEmitter queryUpdateEmitter) {
         this.operationRepository = operationRepository;
         this.accountRepository = accountRepository;
+        this.queryUpdateEmitter = queryUpdateEmitter;
     }
 
     @EventHandler
@@ -66,6 +71,7 @@ public class AccountEventHandler {
         operationRepository.save(accountOperation);
         account.setBalance(account.getBalance() - accountOperation.getAmount());
         accountRepository.save(account);
+        queryUpdateEmitter.emit(e->true, accountOperation);
     }
 
     @EventHandler
@@ -82,6 +88,6 @@ public class AccountEventHandler {
         operationRepository.save(accountOperation);
         account.setBalance(account.getBalance() + accountOperation.getAmount());
         accountRepository.save(account);
-
+        queryUpdateEmitter.emit(e->true, accountOperation);
     }
 }
